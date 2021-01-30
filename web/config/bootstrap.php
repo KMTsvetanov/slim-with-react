@@ -9,8 +9,13 @@ $container = new Container();
 
 $app = SlimAppFactory::create($container);
 
-$routes = require_once __DIR__ . '/routes.php';
+$settings = require_once __DIR__ . '/settings.php';
+$settings($container);
 
+$middleware = require_once __DIR__ . '/middleware.php';
+$middleware($app);
+
+$routes = require_once __DIR__ . '/routes.php';
 $routes($app);
 
 $app->run();
