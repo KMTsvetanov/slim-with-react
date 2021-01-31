@@ -1,13 +1,15 @@
 <?php
 
-
 namespace App\Validation;
-
 
 use DI\Container;
 use Psr\Http\Message\RequestInterface;
 use Respect\Validation\Validator as v;
 
+/**
+ * Class PostValidation
+ * @package App\Validation
+ */
 class PostValidation
 {
     /**
