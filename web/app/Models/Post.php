@@ -17,4 +17,11 @@ class Post extends Model
         'content',
         'image',
     ];
+
+    protected $casts = [
+        'id' => 'int',
+        'title' => 'string',
+        'content' => 'string',
+        'image' => 'string',
+    ];
 }
