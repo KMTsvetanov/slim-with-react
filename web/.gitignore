@@ -1,2 +1,4 @@
 vendor
 composer.lock
+public/images/posts/*
+!public/images/posts/.gitkeep
