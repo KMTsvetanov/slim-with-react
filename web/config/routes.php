@@ -12,11 +12,12 @@ return function (App $app, $authMiddleware) {
 
     $app->get('/post', [PostController::class, 'index']);
 
+    $app->post('/post', [PostController::class, 'create']);
+    // TODO Push Back in
+    $app->get('/post/{id}', [PostController::class, 'show']);
+    $app->post('/post/{id}/edit', [PostController::class, 'edit']);
+    $app->delete('/post/{id}', [PostController::class, 'destroy']);
     $authMiddleware($app->group('', function ($app) {
-        $app->post('/post', [PostController::class, 'create']);
-        $app->patch('/post/{id}/edit', [PostController::class, 'edit']);
-        $app->delete('/post/{id}', [PostController::class, 'destroy']);
-        $app->get('/post/{id}', [PostController::class, 'show']);
     }));
 
     $app->group('/auth', function ($app) {
