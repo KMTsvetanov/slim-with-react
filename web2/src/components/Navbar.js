@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../logo.png';
-import { FaRegComment, FaUserPlus, FaUser } from 'react-icons/fa';
+import {FaRegComment, FaUserPlus, FaUser, FaEdit} from 'react-icons/fa';
 
 class Navbar extends Component {
     render() {
@@ -14,11 +14,6 @@ class Navbar extends Component {
                     <li className="nav-item ml-5">
                         <Link to="/post" className="nav-link">
                             <FaRegComment /> Posts
-                        </Link>
-                    </li>
-                    <li className="nav-item ml-5">
-                        <Link to="/post/create" className="nav-link">
-                            <FaRegComment /> Create Post
                         </Link>
                     </li>
                 </ul>
