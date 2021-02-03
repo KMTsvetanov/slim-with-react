@@ -2,13 +2,15 @@ import { combineReducers, compose, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 
 import postReducer from './reducers/PostReducer';
+import userReducer from './reducers/UserReducer';
 
 const initialState = {};
 
 const middleware = [thunk]
 
 const reducers = combineReducers({
-    posts: postReducer
+    posts: postReducer,
+    users: userReducer,
 });
 
 const store = createStore(reducers, initialState, compose(

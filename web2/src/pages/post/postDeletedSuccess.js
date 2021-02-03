@@ -18,11 +18,19 @@ class PostDeletedSuccess extends Component {
     render() {
         return this.state.redirect
             ? <Redirect to="/post" />
-            : <div className="py-5">
-                <div className="col-10 mx-auto text-center">
-                    <h1>Post is Being Deleted!!!</h1>
+            : localStorage.getItem('token') ? (
+                <div className="py-5">
+                    <div className="col-10 mx-auto text-center">
+                        <h1>Post Delete Verification!!!</h1>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="py-5">
+                    <div className="col-10 mx-auto text-center">
+                        <h1 className="">Not Logged In!</h1>
+                    </div>
+                </div>
+            );
     }
 }
 
