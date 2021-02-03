@@ -5,6 +5,10 @@ use DI\Bridge\Slim\Bridge as SlimAppFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH');
+
 $container = new Container();
 
 $app = SlimAppFactory::create($container);

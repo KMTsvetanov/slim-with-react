@@ -1,0 +1,35 @@
+body{
+    background: #8c9c90;
+}
+
+.nav-bar-color {
+    background: darkmagenta;
+}
+.row.post-row > div {
+    border: solid 1px black;
+    word-wrap:break-word;
+}
+.grid-color-primary,
+.grid-color-secondary {
+    background: darkmagenta;
+    color: white;
+}
+
+.post-row-content:nth-child(2n) {
+    background: #f2f2f2;
+}
+
+.post-row-content:nth-child(2n - 1) {
+    background: #cdd1ce;
+}
+
+.button-box {
+    text-align:center;
+}
+
+.invalid-feedback-error {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
