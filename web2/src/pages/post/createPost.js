@@ -50,7 +50,7 @@ class CreatePost extends Component {
     render() {
         const {title, content, errors} = this.state;
 
-        return (
+        return localStorage.getItem('token') ? (
             <React.Fragment>
                 <div className="py-5">
                     <div className="col-10 mx-auto text-center">
@@ -96,7 +96,12 @@ class CreatePost extends Component {
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment>) : (
+            <div className="py-5">
+                <div className="col-10 mx-auto text-center">
+                    <h1 className="">Not Logged In!</h1>
+                </div>
+            </div>
         );
     }
 }

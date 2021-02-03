@@ -9,25 +9,33 @@ class PostsList extends Component {
     render() {
         const { id, title, content, image } = this.props.post;
 
-        function deletePost(id) {
-            axios.delete(`/post/${id}`).then(res => {})
+        function deletePost(e, id) {
+            let token = localStorage.getItem('token')
+            if(token){
+                const config = {
+                    headers: { 'Authorization':`Bearer ${token}` }
+                }
+                axios.delete(`/post/${id}`, config).then(res => {})
+            }
         }
 
         return (
-            <div className="container post-row-content">
+            <div className="container">
                 <div className="row post-row">
-                    <div className="col-2 py-3">{title}</div>
-                    <div className="col-6 py-3">{content}</div>
-                    <div className="col-2 py-3">{image &&
+                    <div className="col-2 py-3 post-row-content">{title}</div>
+                    <div className="col-6 py-3 post-row-content">{content}</div>
+                    <div className="col-2 py-3 post-row-content">{image &&
                     <img className="img-fluid" alt="Not found" src={`http://localhost:8083/images/posts/${image}`}/>}</div>
-                    <div className="col-2 py-3 button-box">
-                        <Link to={`/post/${id}`} className="btn btn-primary">
-                            <FaEdit /> Edit
-                        </Link>
-                        <Link to={`/post/deleted`} onClick={() => deletePost(id)}  className="btn btn-warning">
-                            <FaEdit /> Delete
-                        </Link>
-                    </div>
+                    {localStorage.getItem('token') ? (
+                        <div className="col-2 py-3 button-box post-row-content">
+                            <Link to={`/post/${id}`} className="btn btn-primary">
+                                <FaEdit /> Edit
+                            </Link>
+                            <Link to={`/post/deleted`} onClick={(e) => deletePost(e, id)}  className="btn btn-warning">
+                                <FaTrashAlt /> Delete
+                            </Link>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         );

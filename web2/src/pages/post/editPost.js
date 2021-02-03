@@ -22,14 +22,20 @@ class EditPost extends Component {
     componentDidMount() {
         let id = this.props.match.params.id;
 
-        axios.get(`/post/${id}`)
-            .then(res => {
-                const {title, content, image} = res.data.data;
+        let token = localStorage.getItem('token')
+        if(token){
+            const config = {
+                headers: { 'Authorization':`Bearer ${token}` }
+            }
+            axios.get(`/post/${id}`, config)
+                .then(res => {
+                    const {title, content, image} = res.data.data;
 
-                this.setState({
-                    title, content, image
-                });
-            })
+                    this.setState({
+                        title, content, image
+                    });
+                })
+        }
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -66,7 +72,7 @@ class EditPost extends Component {
     render() {
         const {title, content, errors} = this.state;
 
-        return (
+        return localStorage.getItem('token') ? (
             <React.Fragment>
                 <div className="py-5">
                     <div className="col-10 mx-auto text-center">
@@ -113,6 +119,12 @@ class EditPost extends Component {
                     </div>
                 </div>
             </React.Fragment>
+        ) : (
+            <div className="py-5">
+                <div className="col-10 mx-auto text-center">
+                    <h1 className="">Not Logged In!</h1>
+                </div>
+            </div>
         );
     }
 }

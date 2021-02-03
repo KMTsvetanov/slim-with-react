@@ -26,16 +26,22 @@ class Posts extends Component {
             <PostsList
                 key={item.id}
                 post={item}
-            ></PostsList> )) : 'Loading data...';
+            ></PostsList> )) : (
+            <div className="py-5">
+                <div className="col-10 mx-auto text-center">Loading data...</div>
+            </div>
+        );
         return (
             <Fragment>
                 <div className="py-5">
                     <div className="col-10 mx-auto text-center">
                         <h1>
                             Posts <span className="px-2"></span>
-                            <Link to="/post/create" className="btn btn-primary">
-                                Create
-                            </Link>
+                            { localStorage.getItem('token') ? (
+                                <Link to="/post/create" className="btn btn-primary">
+                                    Create
+                                </Link>
+                            ) : null}
                         </h1>
                     </div>
                     <PostsColumns />
